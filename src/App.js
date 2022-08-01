@@ -1,10 +1,10 @@
 import './App.css';
-import CounterGroup from './CounterGroup';
+import MulitipleCounter from './MulitipleCounter';
 
 function App() {
   return (
     <div className="App">
-     <CounterGroup size={3} />
+     <MulitipleCounter size={3} />
     </div>
   );
 }
