@@ -11,7 +11,7 @@ export default function CounterGroup(){
         {
         counterList.map((item,index)=>{
         return (<div key={index}>
-                <Counter/><hr/>
+                <Counter index={index}/><hr/>
         </div>);
         })}
         </>

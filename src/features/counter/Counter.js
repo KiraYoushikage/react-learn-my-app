@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import {useState} from 'react'
 import { updateSum } from './counterSlice';
 
-export default function Counter(){
+export default function Counter(props){
     const [num, setNum] = useState(0)
+    console.log("render",num,"index",props.index)
     const dispatch=useDispatch();
     const increment=()=>{
         setNum(num+1);
@@ -14,18 +15,22 @@ export default function Counter(){
         setNum(num-1);
         dispatch(updateSum(-1))
     }
-    const getDispatch=()=>{
-        return dispatch;
-    }
-    const getNum=()=>{
-        return num;
-    }
     useEffect(()=>{
         // do some requests
+        console.log("上一次的num",num,"index",props.index) 
+        
         return ()=>{
             // const action=initAction();
-            console.log('销毁后',num);// Todo num值为啥是0,setNum没有更新到useEffect里面的
-            dispatch(updateSum(-1*num))
+            let numNow;//缓存上一次的
+            const text=(num)=>{
+                numNow=num;
+                console.log("num",num)
+                // return num
+            }
+            console.log(typeof setNum)
+            setNum(num=>text(num))
+            console.log('return 里面的',numNow,"index",props.index);// Todo num值为啥是0,setNum没有更新到useEffect里面的
+            dispatch(updateSum(-1*numNow)) //更新redux里面的sum值
         };
     },[])
     const onChangeNum=(event)=>{
