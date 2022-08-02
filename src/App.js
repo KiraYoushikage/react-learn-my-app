@@ -1,10 +1,10 @@
 import './App.css';
-import MulitipleCounter from './MulitipleCounter';
+import MulitipleCounter from './features/counter/MulitipleCounter';
 
 function App() {
   return (
     <div className="App">
-     <MulitipleCounter size={3} />
+     <MulitipleCounter/>
     </div>
   );
 }
